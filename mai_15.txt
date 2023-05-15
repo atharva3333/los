@@ -1,0 +1,1713 @@
+
+for c:
+touch filename.c
+gcc filename.c -o o/pfilename
+./opfilename
+
+for cpp:
+touch filename.cpp
+g++ filename.cpp -o o/pfilename
+./o/pfilename
+
+draft1:
+pract 2 : Write Linux commands for all administrative and system commands
+Find Configuration of System
+lscpu,lsblk,lsusb,lshw
+Write administrative commands in linux
+uptime,users,netstat,df,du,ps,ls,last,top,ping
+
+pract 3: Implement shell program using patterns, and expansions.
+Step 1: Create a Directory and Some Sample Files
+First, we need to create a directory and some sample files to work with. Open your terminal
+and run the following commands:
+This will create a directory called "files" and some sample files inside it
+mkdir files
+cd files
+touch file1.txt file2.txt file3.md
+Step 2: Write the Shell Program
+Next, we will write the shell program that counts the number of files with a specific
+extension. Open a text editor and save the following code as "count_files.sh":
+#!/bin/bash
+count=$(ls *.md | wc -l)
+echo "There are $count markdown files in the current directory."
+Step 3: Make the Shell Program Executable
+Before we can run the shell program, we need to make it executable. Open your terminal and
+navigate to the directory where you saved "count_files.sh", then run the following command:
+chmod +x count_files.sh
+Step 4: Run the Shell Program
+Finally, we can run the shell program and see the output. Open your terminal and navigate to
+the directory where you saved "count_files.sh", then run the following command:
+./count_files.sh
+
+Write a C/C++ program using loops and program to display * pattern
+1. For loop:
+#include<iostream>
+using namespace std;
+int main()
+{
+cout<<"Program for displaying table of 2 for demonstration of for loop\n";
+for(int i = 1 ; i <= 10 ; i++)
+{
+cout<<"2 * "<<i<<" = "<<2*i<<"\n";
+}
+return 0;
+}
+2. While loop:
+#include<iostream>
+using namespace std;
+int main()
+{
+cout<<"Program for reversing a number for demonstration of while loop\n";
+int n = 1234 , res = 0;
+while(n != 0)
+{
+res = res * 10 + n % 10;
+n /= 10;
+}
+cout<<"Reverse of 1234 is "<<res;
+return 0;
+}
+3. Do-while loop:
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int i = 1; 
+    do {
+        cout << i << " ";
+        ++i;
+    }
+    while (i <= 5);
+    
+    return 0;
+}
+Star Printing:
+Program
+#include<iostream>
+using namespace std;
+int main()
+{
+for(int i = 0 ; i < 5 ; i++)
+{
+int j = i;
+while(j--)
+{
+cout<<"*";
+}
+cout<<endl;
+
+}
+return 0;
+}
+Program:
+#include<iostream>
+using namespace std;
+int main()
+{
+for(int i = 5 ; i >= 0 ; i--)
+{
+int j = i;
+while(j--)
+{
+cout<<"*";
+}
+cout<<endl;
+
+}
+return 0;
+}
+
+pract 4: 
+Implement shell program using substitution and I/O system calls
+// not working
+Step 1: Create a Sample File
+First, we need to create a sample file to work with. Open your terminal and run the following comands:
+echo "line 1" > sample.txt
+echo "line 2" >> sample.txt
+echo "line 3" >> sample.txt
+echo "line 4" >> sample.txt
+Step 2: Write the Shell Program
+Next, we will write the shell program that reverses the order of the lines in the "sample.txt"
+file. Open a text editor and save the following code as "reverse_lines.sh":
+INPUT = "sample.txt"
+OUTPUT = "reversed.txt"
+while read -r line; do
+	echo "$line" | awk {a[i++]=$0} END {for(j=i-1; j>=0;) print a[j--]} >> "$OUTPUT"
+done < "$INPUT"
+echo "the lines in $INPUT have been reversed and written to "$OUTPUT"
+follow step 3,4 of pract 3
+chmod +x reverse_lines.sh
+./reverse_lines.sh
+
+// working
+Write shell programs in Linux
+1. Shell script for addition of 2 integers:
+touch arithmetic.sh
+Sum=$((11 + 12))
+echo "Sum = $Sum"
+Output:
+oracle@geca04-ThinkCentre-M900:~/Desktop/LOS/6.fork$ bash -f arithmetic.sh
+Sum = 23
+2. Shell script for addition of 2 integers
+Sub=$((11 - 12))
+echo "Subtration = $Sub"
+3. Shell script for multiplication of 2 integers
+Sub=$((11 * 12))
+echo "Multiplication = $Sub"
+4. Shell script to check if a string is palindrome:
+echo "Enter a string: "
+read string
+reverse=$(echo "$string" | rev)
+if [ "$string" == "$reverse" ]
+then
+    echo "The string is a palindrome"
+else
+    echo "The string is not a palindrome"
+fi
+or
+echo "Enter a String"
+read input
+reverse=""
+len=${#input}
+for (( i=$len-1; i>=0; i-- ))
+do 
+	reverse="$reverse${input:$i:1}"
+done
+if [ $input == $reverse ]
+then
+    echo "$input is palindrome"
+else
+    echo "$input is not palindrome"
+fi
+5. Shell script to find factorial of a number
+echo "Enter a number to compute its factorial:"
+read num
+factorial=1
+for ((i=1;i<=num;i++)); do
+  factorial=$((factorial * i))
+done
+echo "The factorial of $num is $factorial."
+6. Shell script to find a number is prime or not:
+echo -e "Enter Number : \c"
+read n
+for((i=2; i<=$n/2; i++))
+do
+  ans=$(( n%i ))
+  if [ $ans -eq 0 ]
+  then
+    echo "$n is not a prime number."
+    exit 0
+  fi
+done
+echo "$n is a prime number."
+or
+echo "Enter a number: "
+read num
+if [ $num -lt 2 ]
+then
+    echo "$num is not a prime number"
+    exit
+fi
+for (( i=2; i<=$num/2; i++ ))
+do
+    if [ $((num%i)) -eq 0 ]
+    then
+        echo "$num is not a prime number"
+        exit
+    fi
+done
+echo "$num is a prime number"
+
+pract 5:Write AWK programs in linux.
+write an awk command to print the lines and line numbers in given input file.
+anuj@anuj-virtual-machine:~$ cat> student.txt
+madhura joshi
+sakshi thorat
+anuj babhulgaonkar
+yash patil
+avni patil
+Output:
+anuj@anuj-virtual-machine:~$ awk '{print NR,$0}' student.txt   
+1 madhura joshi
+2 sakshi thorat
+3 anuj babhulgaonkar
+4 yash patil
+5 avni patil
+2. Write an awk command to print first field and second field only if third field value is >=50 in the given input file. (input field separator is “:”  and output field separator is “,”)
+j04@ubuntu:~$ cat> file1.txt
+sachin:10:100 
+ rahul:11:95 
+ rohit:12:89
+Output:
+anuj@anuj-virtual-machine:~$ awk -F':' '$3>=50 {print $1","$2}' file1.txt
+sachin,10
+ rahul,11
+ rohit,12
+3. Write an awk program to print the fields 1 and 4 of a file that is passed as command line argument. The file contains lines of information that is separated by “,” as delimeter. The awk program must print at the end the average of all 4th field data.
+anuj@anuj-virtual-machine:~$ cat > data
+12,13,14,15,one
+ 22,23,24,25,two
+ 34,23,45,23,three
+ 44,55,66,77,four
+Output:
+anuj@anuj-virtual-machine:~$ awk -F',' '{print $1,$2,$3,$4,($1+$2+$3+$4)/4}'  data
+ 12 13 14 15 13.5
+    0
+ 22 23 24 25 23.5
+    0
+ 34 23 45 23 31.25
+   0
+ 44 55 66 77 60.5
+4. Write an awk script to count the number of lines in a file that do not contain vowels
+anuj@anuj-virtual-machine:~$ cat> input.txt
+this is one
+213
+BCDEFG
+This is last line
+Awk file:
+anuj@anuj-virtual-machine:~$ cat> vow.awk
+BEGIN{count=0}
+!/[aeiou]/ {count++;print}
+END{print "Number of lines="count}
+Output:
+anuj@anuj-virtual-machine:~$ awk -f vow.awk input
+awk: cannot open input (No such file or directory)
+anuj@anuj-virtual-machine:~$ awk -f vow.awk input.txt
+213
+BCDEFG
+Number of lines=2
+5. Write an awk program to demonstrate user defined functions and system command.
+anuj@anuj-virtual-machine:~$ cat>lines.awk
+   BEGIN{words=0;characters=0}
+   {
+     character+=length($0);
+     words+=NF;
+   }
+   END{print "lines=",NR," words=",words," Characters=",character}
+anuj@anuj-virtual-machine:~$ cat> file.txt
+This is a file
+    YEs NO
+    1234
+Output:
+anuj@anuj-virtual-machine:~$ awk -f lines.awk file.txt
+lines= 3  words= 7  Characters= 32
+
+pract 6: Write SED programs in linux.
+1. write sed command that prints line number of given lines beginning of file with "O".
+anuj@anuj-virtual-machine:~$ cat> hey.txt
+One
+One Two
+One Or Two
+No
+Yes
+Output:
+anuj@anuj-virtual-machine:~$ sed -n '/O/=' hey.txt
+1
+2
+3
+2. write sed command that delete digits in the given input file
+anuj@anuj-virtual-machine:~$ cat> f.txt
+hey there is room number 404
+Output:
+anuj@anuj-virtual-machine:~$ sed 's/[0-9]//g' f.txt
+hey there is room number 
+3. write sed command that deletes lines that contain both BEGIN and END.
+anuj@anuj-virtual-machine:~$ cat> f2.txt
+This line is BEGIN and END
+This line has only BEGIN
+This has only END
+Output:
+anuj@anuj-virtual-machine:~$ sed '/BEGIN.*END/d' f2.txt
+This line has only BEGIN
+This has only END
+4. write sed command that deletes the first character in each line of a file.
+anuj@anuj-virtual-machine:~$ cat> f3.txt
+I live in this room number
+404
+Output:
+anuj@anuj-virtual-machine:~$ sed 's/^.//' f3.txt
+live in this room number
+04
+
+and
+
+bhagyashri@LAPTOP-7UCCALFV:~$ cat> dc.txt
+My Self Bhagyashri .
+My Room no. fr3
+bhagyashri@LAPTOP-7UCCALFV:~$ sed 's/My//g' dc.txt
+ Self Bhagyashri .
+ Room no. fr3
+bhagyashri@LAPTOP-7UCCALFV:~$ sed 's/Self\|Room//g' dc.txt
+My  Bhagyashri .
+My  no. fr3
+bhagyashri@LAPTOP-7UCCALFV:~$ sed 's/^.//' dc.txt
+y Self Bhagyashri .
+y Room no. fr3
+
+
+
+pract 7: Write grep command in linux
+Consider the below file as an input. 
+anuj@anuj-virtual-machine:~/Desktop$ cat > input.txt
+Anuj
+Ameya
+Madhura
+Sakshi
+1. Case insensitive search : The -i option enables to search for a string case insensitively in the given file. It matches the words like “UNIX”, “Unix”, “unix”. 
+anuj@anuj-virtual-machine:~/Desktop$ grep -i "Anuj" input.txt
+Anuj
+2. Displaying the count of number of matches : We can find the number of lines that matches the given string/pattern  
+anuj@anuj-virtual-machine:~/Desktop$ grep -c "A" input.txt
+2
+3. Display the file names that matches the pattern : We can just display the files that contains the given string/pattern.  
+anuj@anuj-virtual-machine:~/Desktop$ grep -l "m" *
+input.txt
+4. Checking for the whole words in a file : By default, grep matches the given string/pattern even if it is found as a substring in a file. The -w option to grep makes it match only the whole words. 
+anuj@anuj-virtual-machine:~/Desktop$ grep -w "Sakshi" input.txt
+Anuj
+Ameya
+Madhura
+Sakshi
+5. Displaying only the matched pattern : By default, grep displays the entire line which has the matched string. We can make the grep to display only the matched string by using the -o option.  
+anuj@anuj-virtual-machine:~/Desktop$ grep -o "Madhura" input.txt
+Madhura
+6. Show line number while displaying the output using grep -n : To show the line number of file with the line matched. 
+anuj@anuj-virtual-machine:~/Desktop$ grep -n "A" input.txt
+1:Anuj
+2:Ameya
+7. Inverting the pattern match : You can display the lines that are not matched with the specified search string pattern using the -v option. 
+anuj@anuj-virtual-machine:~/Desktop$ grep -v "A" input.txt
+Madhura
+8. Matching the lines that start with a string : The ^ regular expression pattern specifies the start of a line. This can be used in grep to match the lines which start with the given string or pattern.  
+anuj@anuj-virtual-machine:~/Desktop$ grep  "^M" input.txt
+Madhura
+
+pract 8: Write program in C for creating process
+Progarm to display ‘parent’ from parent process and ‘child’ from child process
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/wait.h>
+
+int main(void)
+{
+    int pid;
+    int status;
+
+    printf("Hello World!\n");
+
+    pid = fork();
+
+    if(pid == -1)
+    {
+        perror("bad fork");
+        exit(1);
+    }
+
+    if(pid == 0)
+    {
+        printf("I am the child process.\n");
+    }
+    else
+    {
+        wait(&status);
+        printf("I am the parent process.\n");
+    }
+
+    return 0;
+}
+
+Output:
+oracle@geca04-ThinkCentre-M900:~/Desktop/LOS$ ./a.out Hello World!
+I am the child process. I am the parent process.
+oracle@geca04-ThinkCentre-M900:~/Desktop/LOS$
+C Program to create zombie process
+Program:
+#include <stdlib.h>
+#include <sys/types.h>
+#include <stdio.h>
+#include <unistd.h>
+
+int main()
+{
+    pid_t child_pid = fork();
+
+    // Parent process
+    if (child_pid > 0)
+    {
+        printf("Parent id %d", getpid());
+        sleep(5);
+    }
+    // Child process
+    else
+    {
+        printf("Child id %d", child_pid);
+        exit(0);
+    }
+
+    return 0;
+}
+Output:
+oracle@geca04-ThinkCentre-M900:~/Desktop/LOS/6.fork$ gcc zoombie.c oracle@geca04-ThinkCentre-M900:~/Desktop/LOS/6.fork$ ./a.out
+Child id 0Parent id 3980
+Program that illustrates how to execute 2 commands concurrenly with a command pipe
+Program:
+#include <stdio.h>
+#include <unistd.h>  // for pipe(), fork(), close(), dup(), execlp()
+#include <stdlib.h>  // for exit()
+
+int main()
+{
+    int pfd[2], p;
+    pipe(pfd);
+    p = fork();
+
+    if (p == 0) // for child
+    {
+        close(pfd[0]);
+        close(1);
+        dup(pfd[1]);
+        execlp("ls", "ls", "-l", (char *)0);
+    }
+    else
+    {
+        close(pfd[1]);
+        close(0);
+        dup(pfd[0]);
+        execlp("wc", "wc", (char *)0);
+    }
+
+    return 0;
+}
+Output
+oracle@geca04-ThinkCentre-M900:~/Desktop/LOS/6.fork$ gcc conpipe.c oracle@geca04-ThinkCentre-M900:~/Desktop/LOS/6.fork$ ./a.out
+9	77	467
+C program that illustrates communication between 2 unrelated process using named pipe
+Program:
+#include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <unistd.h>
+
+int main()
+{
+    int pfds[2];
+    char buf[30];
+
+    if (pipe(pfds) == -1)
+    {
+        perror("pipe");
+        exit(1);
+    }
+
+    printf("writing to file descriptor #%d\n", pfds[1]);
+    write(pfds[1], "test", 5);
+
+    printf("reading from file descriptor #%d\n", pfds[0]);
+    read(pfds[0], buf, 5);
+
+    printf("read \"%s\"\n", buf);
+
+    return 0;
+}
+
+Output:
+oracle@geca04-ThinkCentre-M900:~/Desktop/LOS/6.fork$ gcc namedpipe.c oracle@geca04-ThinkCentre-M900:~/Desktop/LOS/6.fork$ ./a.out
+writing to file descriptor #4 reading from file descriptor #3 read"test"
+
+C program in which parent write message to pipe and child read the message Program:
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <string.h>
+
+#define BUFFER_SIZE 25
+#define READ_END 0
+#define WRITE_END 1
+
+int main(void) {
+    char write_msg[BUFFER_SIZE] = "Hello, child!";
+    char read_msg[BUFFER_SIZE];
+    int fd[2];
+    pid_t pid;
+
+    // create pipe
+    if (pipe(fd) == -1) {
+        fprintf(stderr,"Pipe failed");
+        return 1;
+    }
+
+    // fork a child process
+    pid = fork();
+
+    if (pid < 0) { // error occurred
+        fprintf(stderr, "Fork failed");
+        return 1;
+    }
+
+    if (pid > 0) { // parent process
+        // close the unused end of the pipe
+        close(fd[READ_END]);
+
+        // write to the pipe
+        write(fd[WRITE_END], write_msg, strlen(write_msg)+1);
+
+        // close the write end of the pipe
+        close(fd[WRITE_END]);
+
+        printf("Parent process completed writing to pipe\n");
+    }
+    else { // child process
+        // close the unused end of the pipe
+        close(fd[WRITE_END]);
+
+        // read from the pipe
+        read(fd[READ_END], read_msg, BUFFER_SIZE);
+
+        // close the read end of the pipe
+        close(fd[READ_END]);
+
+        printf("Child process received message: %s\n", read_msg);
+    }
+
+    return 0;
+}
+o/p:ajinkya@ajinkya-VirtualBox:~/Desktop$ ./p8op
+Parent process completed writing to pipe
+Child process received message: Hello, child!
+In this program, the parent process writes the message "Hello, child!" to the write end of the pipe, and the child process reads the message from the read end of the pipe. The message is passed as a null-terminated string of characters, and the buffer size is set to 25 to accommodate the message and the null terminator.
+
+pract 9 : Write programs using system calls
+//Process creation
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+void main(){
+int id;
+id=fork();
+if(id<0)
+{
+	printf("cannot create the file.");
+	exit(-1);
+}
+if(id==0)
+{
+	printf("\nchild process created.");
+	exit(0);
+}
+else
+{
+	printf("\nparent process created.");
+}
+}
+
+OUTPUT: 
+bhagyashri@LAPTOP-7UCCALFV:~$ gcc 9a.c -o 9a
+bhagyashri@LAPTOP-7UCCALFV:~$ ./9a
+parent process created.
+child process created.
+bhagyashri@LAPTOP-7UCCALFV:~$ ps
+  PID TTY          TIME CMD
+  382 pts/0    00:00:00 bash
+  418 pts/0    00:00:00 ps
+
+//Executing Process
+echo Program for executing UNIX command using shell programming echo Welcome
+ps
+OUTPUT: 
+bhagyashri@LAPTOP-7UCCALFV:~$ sh exec.sh
+Program for executing UNIX command using shell programming echo Welcome
+  PID TTY          TIME CMD
+  382 pts/0    00:00:00 bash
+  420 pts/0    00:00:00 sh
+  421 pts/0    00:00:00 ps
+
+
+//Wait Program
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+void main(){
+int i=10;
+int pid=fork();
+if(pid==0)
+{
+	printf("Initial value of i : %d \n",i);
+	i+=10;
+	printf("Value of i : %d\n", i);
+	printf("Child Terminated!\n");
+}
+else
+{	
+	wait(0);
+	printf("\n The value of i in parent process: %d",i);
+}
+}
+OUTPUT: 
+bhagyashri@LAPTOP-7UCCALFV:~$ gcc wait.c -o wait
+bhagyashri@LAPTOP-7UCCALFV:~$ ./wait
+Initial value of i : 10
+Value of i : 20
+Child Terminated!
+The value of i in parent process: 10
+
+//Signal handling using KILL operation (give file name as kill.sh)
+echo "Program for Performing KILL Operations"
+ps
+echo Enter the pid
+read pid
+kill $pid
+echo finished
+OUTPUT :
+bhagyashri@LAPTOP-7UCCALFV:~$ sh kill.sh
+Program for Performing KILL Operations
+  PID TTY          TIME CMD
+   23 pts/1    00:00:00 bash
+   48 pts/1    00:00:00 sh
+   49 pts/1    00:00:00 ps
+Enter the pid
+23
+Finished
+//Create a File
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+int main(){
+int id;
+if(id=creat("z1.txt",0)==-1)
+{
+	printf("cannot create the file.");
+	exit(1);
+}
+else
+{
+	printf("\nfile is created.");
+	exit(1);
+}
+return 0;
+}
+OUTPUT: 
+bhagyashri@LAPTOP-7UCCALFV:~$ gcc z1.c -o z1
+bhagyashri@LAPTOP-7UCCALFV:~$ ./z1
+file is created.
+
+
+//Delete a File
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    char file_name[100];
+    int status;
+    
+    printf("Enter the file name to delete: ");
+    scanf("%s", file_name);
+    
+    status = remove(file_name);
+    
+    if(status == 0) {
+        printf("File deleted successfully.\n");
+    } else {
+        printf("Unable to delete the file.\n");
+        perror("Error");
+    }
+    
+    return 0;
+}
+
+OUTPUT:
+ajinkya@ajinkya-VirtualBox:~/Desktop$ gcc p9.c -o p9op
+ajinkya@ajinkya-VirtualBox:~/Desktop$ ./p9op
+Enter the file name to delete: z1.txt
+File deleted successfully.
+
+
+or
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+#include <sys/mman.h>
+
+int main() {
+    // Process control system calls
+    pid_t pid = fork();
+    if (pid == -1) {
+        perror("fork() failed");
+        exit(1);
+    } else if (pid == 0) {
+        // Child process
+        printf("Child process (PID=%d) created.\n", getpid());
+        exit(0);
+    } else {
+        // Parent process
+        printf("Parent process (PID=%d) created child process (PID=%d).\n", getpid(), pid);
+        wait(NULL);
+    }
+    // File management system calls
+    int fd = open("example.txt", O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
+    if (fd == -1) {
+        perror("open() failed");
+        exit(1);
+    }
+
+    char message[] = "This is an example message.";
+    ssize_t bytes_written = write(fd, message, sizeof(message));
+    if (bytes_written == -1) {
+        perror("write() failed");
+        exit(1);
+    }
+    close(fd);
+    // Device management system calls
+    int fd2 = open("/dev/null", O_WRONLY);
+    if (fd2 == -1) {
+        perror("open() failed");
+        exit(1);
+    }
+    int result = ioctl(fd2, TIOCGWINSZ, NULL);
+    if (result == -1) {
+        perror("ioctl() failed");
+        exit(1);
+    }
+    close(fd2);
+    // Information maintenance system calls
+    pid_t my_pid = getpid();
+    printf("My process ID is %d.\n", my_pid);
+    alarm(5);
+    printf("Sleeping for 10 seconds...\n");
+    sleep(10);
+    // Communication system calls
+    int pipe_fd[2];
+    int pipe_result = pipe(pipe_fd);
+    if (pipe_result == -1) {
+        perror("pipe() failed");
+        exit(1);
+    }
+    char message2[] = "This is another example message.";
+    write(pipe_fd[1], message2, sizeof(message2));
+    char buffer[256];
+    ssize_t bytes_read = read(pipe_fd[0], buffer, sizeof(buffer));
+    if (bytes_read == -1) {
+        perror("read() failed");
+        exit(1);
+    }
+    printf("Received message from pipe: %s\n", buffer);
+    int shmid = shmget(IPC_PRIVATE, 256, IPC_CREAT | 0666);
+    if (shmid == -1) {
+        perror("shmget() failed");
+        exit(1);
+    }
+    char *shmaddr = (char *) shmat(shmid, NULL, 0);
+    if (shmaddr == (char *) -1) {
+        perror("shmat() failed");
+        exit(1);
+    }
+    char message3[] = "This is a third example message.";
+    sprintf(shmaddr, "%s", message3);
+    munmap(shmaddr, 256);
+    shmctl(shmid, IPC_RMID, NULL);
+    return 0;
+}
+
+pract 10: Program for deadlock detection,program on deadlock in Linux 
+Deadlock Detection:
+#include <stdio.h>  
+int main()  
+{  
+    // P0, P1, P2, P3, P4 are the Process names here  
+  
+    int n, m, i, j, k;  
+    n = 5;                         // Number of processes  
+    m = 3;                         // Number of resources  
+    int alloc[5][3] = {{0, 1, 0},  // P0 // Allocation Matrix  
+                       {2, 0, 0},  // P1  
+                       {3, 0, 2},  // P2  
+                       {2, 1, 1},  // P3  
+                       {0, 0, 2}}; // P4  
+  
+    int max[5][3] = {{7, 5, 3},  // P0 // MAX Matrix  
+                     {3, 2, 2},  // P1  
+                     {9, 0, 2},  // P2  
+                     {2, 2, 2},  // P3  
+                     {4, 3, 3}}; // P4  
+  
+    int avail[3] = {3, 3, 2}; // Available Resources  
+  
+    int f[n], ans[n], ind = 0;  
+    for (k = 0; k < n; k++)  
+    {  
+        f[k] = 0;  
+    }  
+    int need[n][m];  
+    for (i = 0; i < n; i++)  
+    {  
+        for (j = 0; j < m; j++)  
+            need[i][j] = max[i][j] - alloc[i][j];  
+    }  
+    int y = 0;  
+    for (k = 0; k < 5; k++)  
+    {  
+        for (i = 0; i < n; i++)  
+        {  
+            if (f[i] == 0)  
+            {  
+                int flag = 0;  
+                for (j = 0; j < m; j++)  
+                {  
+                    if (need[i][j] > avail[j])  
+                    {  
+                        flag = 1;  
+                        break;  
+                    }  
+                }  
+                if (flag == 0)  
+                {  
+                    ans[ind++] = i;  
+                    for (y = 0; y < m; y++)  
+                        avail[y] += alloc[i][y];  
+                    f[i] = 1;  
+                }  
+            }  
+        }  
+    }  
+    int flag = 1;  
+    for (int i = 0; i < n; i++)  
+    {  
+        if (f[i] == 0)  
+        {  
+            flag = 0;  
+            printf("The following system is not safe");  
+            break;  
+        }  
+    }  
+    if (flag == 1)  
+    {  
+        printf("Following is the SAFE Sequence\n");  
+        for (i = 0; i < n - 1; i++)  
+            printf(" P%d ->", ans[i]);  
+        printf(" P%d", ans[n - 1]);  
+    }  
+    return (0);  
+}  
+Output:
+anuj@anuj-virtual-machine:~$ gcc deadlock.c 
+anuj@anuj-virtual-machine:~$ ./a.out
+Following is the SAFE Sequence
+ P1 -> P3 -> P4 -> P0 -> P2
+or
+Program:
+#include <stdio.h>
+#include <pthread.h>
+#include <unistd.h>
+pthread_mutex_t mutex1 = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t mutex2 = PTHREAD_MUTEX_INITIALIZER;
+void* thread1(void* arg)
+{
+    pthread_mutex_lock(&mutex1);
+    printf("Thread 1 acquired mutex1\n");
+    sleep(1);
+    printf("Thread 1 waiting for mutex2\n");
+    pthread_mutex_lock(&mutex2);
+    printf("Thread 1 acquired mutex2\n");
+    pthread_mutex_unlock(&mutex2);
+    pthread_mutex_unlock(&mutex1);
+    return NULL;
+}
+void* thread2(void* arg)
+{
+    pthread_mutex_lock(&mutex2);
+    printf("Thread 2 acquired mutex2\n");
+    sleep(1);
+    printf("Thread 2 waiting for mutex1\n");
+    pthread_mutex_lock(&mutex1);
+    printf("Thread 2 acquired mutex1\n");
+    pthread_mutex_unlock(&mutex1);
+    pthread_mutex_unlock(&mutex2);
+    return NULL;
+}
+int main()
+{
+    pthread_t tid1, tid2;
+    pthread_create(&tid1, NULL, thread1, NULL);
+    pthread_create(&tid2, NULL, thread2, NULL);
+    pthread_join(tid1, NULL);
+    pthread_join(tid2, NULL);
+    return 0;
+}
+
+In this program, we have two threads that each acquire a different mutex (‘mutex1' and ‘mutex2’) and then attempt to acquire the other mutex. This creates a circular dependency and leads to a deadlock.
+
+When we compile and run this program, we get the following output:
+
+Thread 1 acquired mutex1
+Thread 2 acquired mutex2
+Thread 1 waiting for mutex2
+Thread 2 waiting for mutex1
+
+
+
+draft2:
+*****ADMINISTRATIVE  and SYSTEM COMMANDS*********
+man
+uptime
+users
+service
+pkill
+pmap
+wget
+ftp
+sftp
+free
+top
+last
+ps
+info
+env
+netstat
+arp
+df
+du
+init
+nano
+nslookup
+shred
+cat
+pwd>
+locate
+chown
+>alias
+echo
+cmp
+mount
+ifconfig
+traceroute>
+sudo
+route
+ping
+find
+users
+who
+ls
+tar
+grep
+su
+awk
+
+cd
+mkdir
+mv
+cp
+rm
+touch
+ln
+cat
+less
+uname
+head
+tail
+diff
+cmp
+comm
+sort
+export
+zip
+unzip
+ssh
+dd
+passwd
+============================================================
+******C PROGRAMS USING LOOPS******
+While loop
+----------
+       #include<stdio.h>
+       void main()
+       {
+       	int i = 1;
+       	while( i <=10 ) 
+       	{
+       		printf ("%d " , i );
+       		i++;
+       	}
+       }
+------------------------------------------------
+#include<stdio.h>  
+int main()
+{    
+	int i=1,number=0,b=9;    
+	printf("Enter a number: ");    
+	scanf("%d",&number);    
+	while(i<=10) 
+	{    
+		printf("%d \n",(number*i));    
+		i++;    
+	}    
+return 0;  
+}  
+---------------------------------------------------
+#include <stdio.h>
+int main()
+{
+	int i = 2;
+        while(i < 10)
+	{
+		printf( "Hello World\n");
+		i++;
+	}
+	return 0;
+}
+----------------------------------------------------
+Do-While loop
+-------------
+#include<stdio.h>
+void main()
+{
+	int i = 15;
+	do
+	{
+		printf ("%d " , i );
+		i++;
+	}
+	while( i <= 20 );
+}
+-----------------------------------------------
+ #include<stdio.h>  
+    #include<stdlib.h>  
+    void main ()  
+    {  
+        char c;  
+        int choice,dummy;    
+        do{  
+        printf("\n1. Print Hello\n2. Print do-while loop\n3. Exit\n");  
+        scanf("%d",&choice);  
+        switch(choice)  
+        {  
+            case 1 :   
+            printf("Hello");   
+            break;  
+            case 2:    
+            printf("do-while loop");  
+            break;  
+            case 3:  
+            exit(0);   
+            break;  
+            default:   
+            printf("please enter valid choice");      
+        }  
+        printf("\ndo you want to enter more?");   
+        scanf("%d",&dummy);  
+        scanf("%c",&c);  
+        }while(c=='y');  
+    }  
+---------------------------------------------------------------
+For loop
+---------
+#include<stdio.h>
+void main()
+{
+	int i;
+	for( i = 20; i < 25; i++) 	
+	{
+		printf ("%d " , i);
+	}
+}
+--------------------------------------------------------
+#include<stdio.h>
+int main()
+{  
+    	int i=1,number=0;      
+    	printf("Enter a number: ");    
+    	scanf("%d",&number);    
+    	for(i=1;i<=10;i++)
+    	{      
+    		printf("%d \n",(number*i));    
+    	}    
+    return 0;  
+}  
+---------------------------------------------------------
+#include <stdio.h>  
+int main()  
+{  
+        int a,b,c;  
+        for(a=0,b=12,c=23;a<2;a++)  
+        {  
+            printf("%d ",a+b+c);  
+        }  
+}
+-------------------------------------------------------
+#include<stdio.h>  
+void main ()  
+{  
+        int i=0,j=2;  
+        for(i = 0;i<5;i++,j=j+2)  
+        {  
+            printf("%d %d\n",i,j);  
+        }  
+}  
+======================================================================
+***********STAR PATTERN**************************
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main()
+{ 
+	float n,i,j,q,w;
+	q=tan(M_PI*0.4);
+	w=tan(M_PI*0.2);
+	printf("Enter the size\n");
+	scanf("%f",&n);
+	for(j=ceil(n*q);j>=0;j--)
+	{
+		for(i=-ceil(0.55*n*q/w-n);i<ceil(0.55*n*q/w-n);i++)
+		{
+			if((j<=0.55*n*q && j>=(i+n)*w && j>=(n-i)*w)||(j>=(i+n)*w && 				j<=(i+n)*q && j<=(n-i)*q)||(j<=(n-i)*q && j>=(n-i)*w && j<=(i+n)*q))
+			{
+				printf("*");
+			}
+			else
+			{
+				printf(" ");
+			}
+		}
+		printf("\n");
+	}
+	return 0;
+}
+
+gcc star.c -o star -lm
+====================================================================
+***********SHELL PROGRAMMING******************
+Basic Commands
+--------------
+history
+help
+dir
+ls
+ls-ltr
+cd destination_directory’s_name
+cd..
+pwd
+clear
+whereis command_name
+whatis command_name
+---------------------------------------
+Commands used for System Information
+--------------------------------------
+date
+date –set=”Date_in_format(YYMMDD) Time_in_format(HH:MM)
+df
+free
+ps
+uptime
+w
+passwd
+exit
+shutdown
+-------------------------------------------------------
+Commands used for File Handling
+-----------------------------------------------
+mkdir New_Directory’s_Name
+rmdir Directory’s_Name
+rm file’s_name
+mv File1 File2
+mv File1 File_Rename
+cp source_file_name destination_file_name
+cat file_name
+head -n File_name
+tail -n File_name
+echo expression_to_be_displayed
+grep “expression_to_be_Searched” file_name_to_search_in
+zip Files.zip Check.txt Test.txt Output.txt
+unzip Files.zip
+================================================================
+***********AWK PROGRAMMING******************
+Fileinput
+---------
+Hello
+Lab Linux Operating System
+AWK Programming
+
+cmds.awk
+--------
+{print NR, $0}
+
+awk -f cmds.awk fileinput
+-------------------------------------------------------
+file1
+-----
+pratiksha:50:100
+abhi:10:100
+riya:11:95
+hrishi:45:98
+
+awk -F ':' '$3>=50 {print $1 "," $2}' file1
+--------------------------------------------------------
+marks.txt
+----------
+BE20F06F038, Pratiksha, 89,98,75,90,80
+BE20F06F001, Abhi, 78, 85, 68, 95, 88
+BE20F06F080, Riya, 90, 56, 78, 60, 79
+
+marks.awk
+----------
+{total = $3 + $4 + $5 + $6 + $7
+if( $3>=30 && $4>=30 && $5>=40 && $6>=40 && $7>=40)
+	print $1, $2, total, "PASS";
+	else
+	print $1, $2, total, "FAIL";}
+
+awk -F "," -f marks.awk marks.txt
+----------------------------------------------------------------
+Data
+-----
+10, 11, 12, 13, one
+20, 22, 24, 26, two
+99, 88, 77, 66, three
+
+awk -F ',' '{print $1, $2, $3, $4, ($1 + $2 + $3 + $4)/4}' data
+------------------------------------------------------------------
+user.awk
+--------
+{if ($3 > 0) display($3)}
+function display(name)
+{
+	print name
+}
+
+awk -F ',' -f user.awk data
+----------------------------------------------------------------
+vowels.awk
+-----------
+BEGIN {count = 0}
+!/[aeiou]/{count++;print}
+END {print "Number of lines=" count}
+
+awk -f vowels.awk fileinput
+----------------------------------------------------------------
+lines.awk
+---------
+BEGIN {words = 0; characters = 0}
+{
+	characters+=length($0);
+	words+=NF;
+}
+END {print "lines = ", NR, "words = ", words, "characters = ", characters}
+
+awk -f lines.awk fileinput
+=======================================================================================
+**********SED COMMANDS*********************
+cat > geekfile.txt
+
+unix is great os. unix is opensource. unix is free os.
+learn operating system.
+unix linux which one you choose.
+unix is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.
+----------------------------------------------------------------------------
+sed 's/unix/linux/' geekfile.txt
+
+sed 's/unix/linux/2' geekfile.txt
+
+sed 's/unix/linux/g' geekfile.txt
+
+sed 's/unix/linux/3g' geekfile.txt
+
+echo "Welcome To The Geek Stuff" | sed 's/\(\b[A-Z]\)/\(\1\)/g'
+
+sed '3 s/unix/linux/' geekfile.txt
+
+sed 's/unix/linux/p' geekfile.txt
+
+sed -n 's/unix/linux/p' geekfile.txt
+
+sed '1,3 s/unix/linux/' geekfile.txt
+
+sed '2,$ s/unix/linux/' geekfile.txt
+
+sed '5d' filename.txt
+
+sed '$d' filename.txt
+
+sed '3,6d' filename.txt
+
+ sed '12,$d' filename.txt
+
+sed '/abc/d' filename.txt
+===============================================================================
+**********GREP COMMANDS********************************
+cat > geekfile.txt
+
+unix is great os. unix was developed in Bell labs.
+learn operating system.
+Unix linux which one you choose.
+uNix is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.
+---------------------------------------------------------------------------
+grep -i "UNix" geekfile.txt
+grep -c "unix" geekfile.txt
+grep -l "unix" *
+grep -w "unix" geekfile.txt
+grep -o "unix" geekfile.txt
+grep -n "unix" geekfile.txt
+grep -v "unix" geekfile.txt
+grep "^unix" geekfile.txt
+grep "os$" geekfile.txt
+grep –e "Agarwal" –e "Aggarwal" –e "Agrawal" geekfile.txt
+
+cat pattern.txt
+Agarwal
+Aggarwal
+Agrawal
+
+grep –f pattern.txt  geekfile.txt
+
+grep -A1 learn geekfile.txt
+=========================================================================
+**********PROCESS CREATION******************
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+void main()
+{
+	int id;
+	id=fork();
+	if(id<0)
+	{
+		printf("cannot create the file.");
+		exit(-1);
+	}
+        if(id==0)
+	{
+		printf("\nchild process created.");
+		exit(0);
+	}
+	else
+	{
+		printf("\nparent process created.");
+	}
+}
+=====================================================================
+********SYSTEM CALLS*************************
+Process creation
+-----------------
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+void main()
+{
+	int id;
+	id=fork();
+	if(id<0)
+	{
+		printf("cannot create the file.");
+		exit(-1);
+	}
+	if(id==0)
+	{
+		printf("\nchild process created.");
+		exit(0);
+	}
+	else
+	{
+		printf("\nparent process created.");
+	}
+}
+
+gcc pc.c -o pc
+./pc
+ps
+----------------------------------------------------------------
+Executing a command
+--------------------
+cat > exec.sh
+
+echo Program for executing UNIX command using shell 
+programming echo Welcome 
+ps
+
+sh exec.sh
+------------------------------------------------------------
+Signal handling using kill
+--------------------------
+cat > kill.sh
+
+echo “program for performing KILL operations”
+ps
+echo enter the pid
+read pid
+kill $pid
+echo finished
+
+sh kill.sh
+-----------------------------------------------------------------
+Wait Command
+-------------
+cat > wait.c
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+void main()
+{
+	int i=10;
+	int pid=fork();
+	if(pid==0)
+	{
+		printf("Initial value of i : %d \n",i);
+		i+=10;
+		printf("Value of i : %d\n", i);
+		printf("Child Terminated!\n");
+	}
+	else
+	{
+		wait(0);
+		printf("\n The value of i in parent process: %d",i);
+	}
+}
+ 
+gcc wait.c -o wait
+./wait
+-----------------------------------------------------------------------
+Create a file
+-------------
+cat > Fread.c
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+int main(){
+int id;
+if(id=creat("z1.txt",0)==-1)
+{
+printf("cannot create the file.");
+exit(1);
+}
+else
+{
+printf("\nfile is created.");
+exit(1);
+}
+return 0;
+}
+
+gcc Fread.c -o Fread
+./Fread
+----------------------------------------------------------------
+Delete a File
+--------------
+cat > RmFile.c
+
+#include <stdio.h> 
+int main() 
+{ 
+int status; 
+char file_name[25]; 
+printf("Enter name of a file you wish to delete: "); 
+gets(file_name); 
+status = remove(file_name); 
+if (status == 0) 
+{ 
+printf("%s file deleted successfully.\n", file_name); 
+} 
+else 
+{ 
+printf("Unable to delete the file\n"); 
+perror("Following error occurred"); 
+} 
+return 0; 
+} 
+
+gcc RmFile.c -o RmFile
+./RmFile
+=======================================================================
+***********DEADLOCK DETECTION AND AVOIDANCE***********************
+cat > deadlock.c
+
+#include<stdio.h> 
+#include<stdlib.h>
+int max[100][100]; 
+int alloc[100][100]; 
+int need[100][100]; 
+int avail[100]; 
+int n,r; 
+void input(); 
+void show(); 
+void cal(); 
+int main() 
+{ 
+int i,j; 
+printf("********** DeadLock Detection ************\n"); 
+input(); 
+show(); 
+cal(); 
+return 0; 
+} 
+void input() 
+{ 
+int i,j; 
+printf("Enter the no of Processes\t"); 
+scanf("%d",&n); 
+printf("Enter the no of resources instances\t"); 
+scanf("%d",&r); 
+printf("Enter the Max Matrix\n"); 
+for(i=0;i<n;i++) 
+{ 
+for(j=0;j<r;j++) 
+{ 
+scanf("%d",&max[i][j]); 
+} 
+} 
+printf("Enter the Allocation Matrix\n"); 
+for(i=0;i<n;i++) 
+{ 
+for(j=0;j<r;j++) 
+{ 
+scanf("%d",&alloc[i][j]); 
+} 
+} 
+printf("Enter the available Resources\n"); 
+for(j=0;j<r;j++) 
+{ 
+scanf("%d",&avail[j]); 
+} 
+} 
+void show() 
+{ 
+int i,j; 
+printf("Process\t Allocation\t Max\t Available\t"); 
+for(i=0;i<n;i++) 
+{ 
+printf("\nP%d\t ",i+1); 
+for(j=0;j<r;j++) 
+{ 
+printf("%d ",alloc[i][j]); 
+} 
+printf("\t"); 
+for(j=0;j<r;j++) 
+{ 
+printf("%d ",max[i][j]); 
+} 
+printf("\t"); 
+if(i==0) 
+{ 
+for(j=0;j<r;j++) 
+printf("%d ",avail[j]); 
+} 
+} 
+} 
+void cal() 
+{ 
+int finish[100],temp,need[100][100],flag=1,k,c1=0; 
+int safe[100]; 
+int i,j; 
+for(i=0;i<n;i++) 
+{ 
+finish[i]=0; 
+} 
+//find need matrix 
+for(i=0;i<n;i++) 
+{ 
+for(j=0;j<r;j++) 
+{ 
+need[i][j]=max[i][j]-alloc[i][j]; 
+} 
+} 
+printf("\n"); 
+while(flag) 
+{ 
+flag=0; 
+for(i=0;i<n;i++) 
+{ 
+int c=0; 
+for(j=0;j<r;j++) 
+{ 
+if((finish[i]==0)&&(need[i][j]<=avail[j])) 
+{ 
+c++; 
+if(c==r) 
+{ 
+for(k=0;k<r;k++) 
+{ 
+avail[k]+=alloc[i][j]; 
+finish[i]=1; 
+flag=1; 
+} 
+printf("P%d->",i); 
+if(finish[i]==1) 
+{ 
+i=n; 
+} 
+} 
+} 
+} 
+} 
+} 
+for(i=0;i<n;i++) 
+{ 
+if(finish[i]==1) 
+{ 
+c1++; 
+} 
+else 
+{ 
+printf("P%d->",i); 
+} 
+} 
+if(c1==n) 
+{ 
+printf("\n The system is in safe state"); 
+} 
+else 
+{ 
+printf("\n Process are in dead lock"); 
+printf("\n System is in unsafe state"); 
+} 
+} 
+
+gcc deadlock.c -o deadlock
+./deadlock
+-----------------------------------
+Enter the no of Processes 5
+Enter the no of resources instances 3
+Enter the Max Matrix
+7 5 3
+3 2 2
+9 0 3
+2 2 2
+4 3 3
+Enter the Allocation Matrix
+0 1 0
+2 0 0
+3 0 2
+2 1 1
+0 0 2
+Enter the available Resources
+3 2 2
+Process Allocation Max Available
+P1 0 1 0 7 5 3 3 2 2 
+P2 2 0 0 3 2 2 
+P3 3 0 2 9 0 3 
+P4 2 1 1 2 2 2 
+P5 0 0 2 4 3 3 
+P1->P3->P4->P2->P0->
+====================================================================
+         
+
+
+
+
+
+
